@@ -49,8 +49,6 @@
   <ItemGroup>
     <Compile Include="blip-creator\BlipCreator.cs" />
     <Compile Include="blip-creator\HelipadBlip.cs" />
-    <Compile Include="Class1.cs" />
-    <Compile Include="Class2.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="setup-manager\Settings.cs" />

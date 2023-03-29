@@ -50,9 +50,12 @@ namespace Helideck_Signaling.blip_creator
 
                     foreach (var locationOfTheNativeHelipad in locationOfTheNativeHelipads)
                     {
-                        if (building.Position.ToString() == locationOfTheNativeHelipad.ToString())
-                            hasThisHelipadBeenIdentifiedYet =
-                                true;
+                        var buildingPositionn
+                            = building
+                                .Position;
+                        
+                        if (buildingPositionn.ToString() == locationOfTheNativeHelipad.ToString())
+                            hasThisHelipadBeenIdentifiedYet = true;
                     }
 
                     if (!hasThisHelipadBeenIdentifiedYet)
@@ -76,9 +79,12 @@ namespace Helideck_Signaling.blip_creator
 
                     foreach (var locationOfTheNativeHelipad in locationOfTheNativeHelipads)
                     {
-                        if (prop.Position.ToString() == locationOfTheNativeHelipad.ToString())
-                            hasThisHelipadBeenIdentifiedYet =
-                                true;
+                        var propPosition
+                            = prop
+                                .Position;
+
+                        if (propPosition.ToString() == locationOfTheNativeHelipad.ToString())
+                            hasThisHelipadBeenIdentifiedYet = true;
                     }
 
                     if (!hasThisHelipadBeenIdentifiedYet)
