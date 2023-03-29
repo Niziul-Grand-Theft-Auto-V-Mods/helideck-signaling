@@ -1,33 +1,33 @@
-﻿using System.Drawing;
+﻿//using System.Drawing;
 
-namespace Helideck_Signaling.user_interface.pop_up.settings.interfaces
-{
-    internal interface ISpriteGroups
-    {
-        PointF Position
-        {
-            get;
-        }
+//namespace Helideck_Signaling.user_interface.pop_up.settings.interfaces
+//{
+//    internal interface ISpriteGroups
+//    {
+//        PointF Position
+//        {
+//            get;
+//        }
 
-        Color Color
-        {
-            get;
-        }
+//        Color Color
+//        {
+//            get;
+//        }
 
-        bool Enabled
-        {
-            get;
-        }
+//        bool Enabled
+//        {
+//            get;
+//        }
 
-        bool Centered
-        {
-            get;
-        }
+//        bool Centered
+//        {
+//            get;
+//        }
 
-        void ScaledDrawAllSprites();
+//        void ScaledDrawAllSprites();
 
-        void EnableAllSprites();
+//        void EnableAllSprites();
 
-        void DisableAllSprites();
-    }
-}
+//        void DisableAllSprites();
+//    }
+//}

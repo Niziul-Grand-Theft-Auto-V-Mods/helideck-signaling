@@ -1,89 +1,89 @@
-﻿using System.Collections.Generic;
+﻿//using System.Collections.Generic;
 
-using Helideck_Signaling.user_interface.pop_up.settings.creators;
-
-
-namespace Helideck_Signaling.user_interface.pop_up.settings
-{
-    internal sealed class LayoutGroupManager
-    {
-        internal IList<LayoutCreator> LayoutsTop 
-        { get; private set; }
-
-        internal IList<LayoutCreator> LayoutsBody 
-        { get; private set; }
-
-        internal IList<LayoutCreator> LayoutsBottom
-        { get; private set; }
-
-        internal IList<LayoutCreator> LayoutsTimer 
-        { get; private set; }
-
-        internal IList<LayoutCreator> LayoutsAlert 
-        { get; private set; }
+//using Helideck_Signaling.user_interface.pop_up.settings.creators;
 
 
-        public LayoutGroupManager()
-        {
-            LayoutsTop =
-                new List<LayoutCreator>();
+//namespace Helideck_Signaling.user_interface.pop_up.settings
+//{
+//    internal sealed class LayoutGroupManager
+//    {
+//        internal IList<LayoutCreator> LayoutsTop 
+//        { get; private set; }
 
-            LayoutsBody =
-                new List<LayoutCreator>();
+//        internal IList<LayoutCreator> LayoutsBody 
+//        { get; private set; }
 
-            LayoutsBottom =
-                new List<LayoutCreator>();
+//        internal IList<LayoutCreator> LayoutsBottom
+//        { get; private set; }
 
-            LayoutsTimer =
-                new List<LayoutCreator>();
+//        internal IList<LayoutCreator> LayoutsTimer 
+//        { get; private set; }
 
-            LayoutsAlert =
-                new List<LayoutCreator>();
-        }
-
-        internal void ScaledDrawAll()
-        {
-            foreach (var listOfLayouts in ReturnListsOfLayouts())
-            {
-                ScaledDrawThis(listOfLayouts);
-            }
-        }
-        internal void ScaledDrawThis(IList<LayoutCreator> listOfLayouts)
-        {
-            foreach (var layout in listOfLayouts)
-            {
-                layout
-                    .ScaledDrawAllSprites();
-            }
-        }
+//        internal IList<LayoutCreator> LayoutsAlert 
+//        { get; private set; }
 
 
-        internal void DisposeAll()
-        {
-            foreach (var listOfLayouts in ReturnListsOfLayouts())
-            {
-                DisposeThis(listOfLayouts);
-            }
-        }
-        internal void DisposeThis(IList<LayoutCreator> listOfLayouts)
-        {
-            foreach (var layout in listOfLayouts)
-            {
-                layout
-                    .DisposeAllSprites();
-            }
-        }
+//        public LayoutGroupManager()
+//        {
+//            LayoutsTop =
+//                new List<LayoutCreator>();
 
-        private IList<LayoutCreator>[] ReturnListsOfLayouts()
-        {
-            return new[]
-            {
-                LayoutsTop,
-                LayoutsBody,
-                LayoutsBottom,
-                LayoutsTimer,
-                LayoutsAlert
-            };
-        }
-    }
-}
+//            LayoutsBody =
+//                new List<LayoutCreator>();
+
+//            LayoutsBottom =
+//                new List<LayoutCreator>();
+
+//            LayoutsTimer =
+//                new List<LayoutCreator>();
+
+//            LayoutsAlert =
+//                new List<LayoutCreator>();
+//        }
+
+//        internal void ScaledDrawAll()
+//        {
+//            foreach (var listOfLayouts in ReturnListsOfLayouts())
+//            {
+//                ScaledDrawThis(listOfLayouts);
+//            }
+//        }
+//        internal void ScaledDrawThis(IList<LayoutCreator> listOfLayouts)
+//        {
+//            foreach (var layout in listOfLayouts)
+//            {
+//                layout
+//                    .ScaledDrawAllSprites();
+//            }
+//        }
+
+
+//        internal void DisposeAll()
+//        {
+//            foreach (var listOfLayouts in ReturnListsOfLayouts())
+//            {
+//                DisposeThis(listOfLayouts);
+//            }
+//        }
+//        internal void DisposeThis(IList<LayoutCreator> listOfLayouts)
+//        {
+//            foreach (var layout in listOfLayouts)
+//            {
+//                layout
+//                    .DisposeAllSprites();
+//            }
+//        }
+
+//        private IList<LayoutCreator>[] ReturnListsOfLayouts()
+//        {
+//            return new[]
+//            {
+//                LayoutsTop,
+//                LayoutsBody,
+//                LayoutsBottom,
+//                LayoutsTimer,
+//                LayoutsAlert
+//            };
+//        }
+//    }
+//}

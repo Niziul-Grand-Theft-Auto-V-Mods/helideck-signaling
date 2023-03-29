@@ -16,16 +16,16 @@ namespace Helideck_Signaling
 
         public Main()
         {
-            _areThereBlipsOnTheMap =
-                false;
+            _blipCreator 
+                = new BlipCreator();
             
-            _player =
-                Game
+            _areThereBlipsOnTheMap 
+                = false;
+            
+            _player 
+                = Game
                     .Player
                         .Character;
-
-            _blipCreator =
-                new BlipCreator();
 
             Tick    += (o, e) =>
             { Start(); };
@@ -44,7 +44,7 @@ namespace Helideck_Signaling
             {
                 case true:
                     {
-                        BlipBehaviors();
+                        BlipBehaviors();        
                     }
                     return;
                 case false:
@@ -92,13 +92,12 @@ namespace Helideck_Signaling
                 _blipCreator
                     .ClearsMapLeavingOnlyTheSelectedBlips();
 
+                //var isTheWaypointInUse =
+                //    World
+                //        .WaypointBlip != null;
 
-                var isTheWaypointInUse =
-                    World
-                        .WaypointBlip != null;
-
-                if (isTheWaypointInUse)
-                    LandingZoneControl();
+                //if (isTheWaypointInUse)
+                //    LandingZoneControl();
             }
 
             _areThereBlipsOnTheMap = 
@@ -140,7 +139,6 @@ namespace Helideck_Signaling
                             }
                             else
                             {
-
                                 if (vehicleOnTheLandingArea
                                         .IsHelicopter &&
                                     vehicleOnTheLandingArea
@@ -154,7 +152,6 @@ namespace Helideck_Signaling
                                     
                                     vehicleOnTheLandingArea
                                         .Delete();
-                                    
                                 }
                             }
                         }
