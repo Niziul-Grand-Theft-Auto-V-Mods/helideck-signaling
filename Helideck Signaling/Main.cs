@@ -9,7 +9,7 @@ namespace Helideck_Signaling
         private CreateBlip HelipadsBlips =
             new CreateBlip();
 
-        private bool areBlipsOnTheMap =
+        private bool areThereBlipsOnTheMap =
             false;
 
         private readonly Vector3[] positionOfHelipads =
@@ -29,7 +29,7 @@ namespace Helideck_Signaling
             new Vector3(-144.464355f, -593.464966f, 210.776611f),
             new Vector3(-286.335968f, -618.134583f, 49.3393173f),
             new Vector3(-1391.49451f, -477.454987f, 90.2572632f),
-            new Vector3(-1581.92261f, -569.445129f, 115.334038f),
+            new Vector3(-1581.92261f, -569.445129f, 115.334038f), //
             new Vector3(-1219.6731f, -832.077759f, 28.4144821f),
             new Vector3(-1095.55115f, -834.919495f, 36.6768074f),
             new Vector3(-735.308044f, -1456.47986f, 4.00194979f),
@@ -55,42 +55,59 @@ namespace Helideck_Signaling
             { End(); };
         }
 
-        private void End()
-        {
-            WipeBlips();
-        }
         private void Start()
         {
             if (Game.Player.Character.IsInHeli)
             {
-                if (!areBlipsOnTheMap)
+                BlipBehaviors();
+            }
+            else
+            {
+                ClearAllBlipsFromTheMap();
+            }
+        }
+        private void End()
+        {
+            ClearAllBlipsFromTheMap();
+        }
+
+
+        void BlipBehaviors()
+        {
+            if (Game.Player.Character.CurrentVehicle.IsStopped)
+            {
+                if (!areThereBlipsOnTheMap)
                 {
+                    ClearAllBlipsFromTheMap();
                     AddBlipsOnTheMap();
                 }
                 MakeBlipVisibleAtLongDistancesOnTheMinimap();
             }
             else
             {
-                WipeBlips();
+                Wait(2500);
+                HelipadsBlips.ClearsTheMapLeavingOnlyTheSelectedBlips();
+
+                areThereBlipsOnTheMap = false;
             }
         }
-
-        private void WipeBlips()
+        void ClearAllBlipsFromTheMap()
         {
             if (!HelipadsBlips.IsEmpty())
             {
                 HelipadsBlips.Delete();
-                areBlipsOnTheMap = false;
+                areThereBlipsOnTheMap = false;
             }
         }
-        private void AddBlipsOnTheMap()
+        void AddBlipsOnTheMap()
         {
             HelipadsBlips =
                 new CreateBlip(positionOfHelipads);
 
-            areBlipsOnTheMap = true;
+            areThereBlipsOnTheMap = true;
         }
-        private void MakeBlipVisibleAtLongDistancesOnTheMinimap()
+
+        void MakeBlipVisibleAtLongDistancesOnTheMinimap()
         {
             var isIheWaypointInUse = World.WaypointBlip != null;
 
