@@ -26,10 +26,15 @@ namespace Helideck_Signaling.blip_creator
             {
                 Helipads.Add(new HelipadBlip(position));
             }
-            
+
+            CheckAndAddNewHelipadsToTheMap();
+        }
+
+        private void CheckAndAddNewHelipadsToTheMap()
+        {
             foreach (var build in World.GetAllBuildings())
             {
-                if (build.Model == modelHelipad[0] || 
+                if (build.Model == modelHelipad[0] ||
                     build.Model == modelHelipad[1])
                 {
                     Helipads.Add(new HelipadBlip(build.Position));
@@ -56,11 +61,6 @@ namespace Helideck_Signaling.blip_creator
 
         internal void MakeTheHelipadBlipVisibleOnTheMinimapAtLongDistances()
         {
-            MakeSureThePositionOfTheHelipadMatchesThatOfTheWaypoint();
-        }
-
-        void MakeSureThePositionOfTheHelipadMatchesThatOfTheWaypoint()
-        {
             var waypointPosition = World.WaypointPosition;
 
             foreach (var helipad in Helipads)
@@ -69,18 +69,24 @@ namespace Helideck_Signaling.blip_creator
                     helipad.Position.Y == waypointPosition.Y &&
                     helipad.IsTheBlipShortRange())
                 {
-                    MakeTheBlipVisibleOnTheMinimap(helipad);
+                    helipad.MakeTheBlipVisibleOnTheMinimap();
+                    World.WaypointBlip.IsShortRange = true;
                 }
             }
-        }
-        void MakeTheBlipVisibleOnTheMinimap(HelipadBlip helipad)
-        {
-            helipad.MakeTheBlipVisibleOnTheMinimap();
-            World.WaypointBlip.IsShortRange = true;
         }
 
 
         internal bool IsEmpty() => Helipads.Count == 0;
+        internal void ClearsTheMapLeavingOnlyTheSelectedBlips()
+        {
+            foreach (var blip in Helipads)
+            {
+                if (blip.IsTheBlipShortRange())
+                {
+                    blip.Delete();
+                }
+            }
+        }
         internal void Delete()
         {
             foreach (var blip in Helipads)

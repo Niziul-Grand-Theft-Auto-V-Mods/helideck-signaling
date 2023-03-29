@@ -13,6 +13,8 @@ namespace Helideck_Signaling.blip_creator
         { get; private set; }
 
         internal readonly Blip[] blips = new Blip[2];
+
+
         private readonly float[] blipSize =
         {
             0.40f,
@@ -33,8 +35,17 @@ namespace Helideck_Signaling.blip_creator
             BlipDisplayType.BothMapNoSelectable,
             BlipDisplayType.BothMapSelectable
         };
-
-
+        private readonly BlipCategoryType[] categoryType =
+        {
+            BlipCategoryType.Property,
+            BlipCategoryType.OwnedProperty
+        };
+        private readonly string[] rockstarFormattingCodes =
+        {
+            "~w~",  // HUD_COLOUR_WHITE
+            "~y~", // HUD_COLOUR_YELLOW
+            "~b~" // HUD_COLOUR_BLUE
+        };
 
 
         public HelipadBlip(Vector3 position)
@@ -70,11 +81,20 @@ namespace Helideck_Signaling.blip_creator
                 blips[i].DisplayType =
                     displayType[i];
 
-                blips[i].Name =
-                    "Helipad";
+                blips[i].CategoryType =
+                    categoryType[0];
 
                 blips[i].IsShortRange =
                     true;
+
+                var zoneLocalizedName = 
+                    World.GetZoneLocalizedName(Position);
+
+                var nameOfHelipadLocation = 
+                    $"{rockstarFormattingCodes[2]}Helipad{rockstarFormattingCodes[0]} - {rockstarFormattingCodes[1] + zoneLocalizedName}";
+
+                blips[i].Name =
+                    nameOfHelipadLocation;
             }
         }
 
