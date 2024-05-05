@@ -1,9 +1,9 @@
 ﻿using GTA;
 
-using Helideck_Signaling.blip_creator;
+using Helideck_signaling.blip_creator;
 
 
-namespace Helideck_Signaling
+namespace Helideck_signaling
 {
     internal sealed class Main : Script
     {

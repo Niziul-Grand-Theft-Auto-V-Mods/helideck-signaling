@@ -8,7 +8,7 @@ using System.Drawing;
 using System.Collections.Generic;
 
 
-namespace Helideck_Signaling.setup_manager
+namespace Helideck_signaling.setup_manager
 {
     enum LayoutGroups
     {

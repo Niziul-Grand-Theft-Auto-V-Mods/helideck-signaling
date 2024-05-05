@@ -2,10 +2,10 @@
 
 using System.Collections.Generic;
 
-using Helideck_Signaling.setup_manager;
+using Helideck_signaling.setup_manager;
 
 
-namespace Helideck_Signaling.blip_creator
+namespace Helideck_signaling.blip_creator
 {
     internal sealed class BlipCreator
     {
