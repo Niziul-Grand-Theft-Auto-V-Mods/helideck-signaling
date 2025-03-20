@@ -9,6 +9,9 @@ namespace Helideck_signaling
 
         public Main()
         {
+            _helideckSignaling
+                = InstantiateScript<HelideckSignaling>();
+
             Tick += (o, e) =>
             {
                 switch (Game.LocalPlayerPed.IsInHeli)
@@ -17,8 +20,7 @@ namespace Helideck_signaling
                         {
                             if (_helideckSignaling == null)
                             {
-                                _helideckSignaling
-                                    = InstantiateScript<HelideckSignaling>();
+                                return;
                             }
 
                             _helideckSignaling
