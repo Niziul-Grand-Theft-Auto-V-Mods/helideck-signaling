@@ -1,17 +1,17 @@
 ﻿using GTA;
 using GTA.Math;
-using Helideck_signaling.features.custom_helipad_blip.creators.resources.structs;
+using Helideck_signaling.script.features.custom_blip.creators.resources.structs;
 
-namespace Helideck_signaling.features.custom_helipad_blip.creators
+namespace Helideck_signaling.script.features.custom_blip.creators
 {
-    internal sealed class CustomHelipadBlipCreator
+    internal sealed class CustomBlipCreator
     {
         private readonly Blip _topBlip;
 
         private readonly Blip _bottomBlip;
 
-        private static readonly StCustomHelipadBlipConfiguration _topBlipConfig
-            = new StCustomHelipadBlipConfiguration
+        private static readonly StCustomBlipConfiguration _topBlipConfig
+            = new StCustomBlipConfiguration
             {
                 IsShortRange
                 = true,
@@ -31,8 +31,8 @@ namespace Helideck_signaling.features.custom_helipad_blip.creators
                         .Property
             };
 
-        private static readonly StCustomHelipadBlipConfiguration _bottomBlipConfig
-            = new StCustomHelipadBlipConfiguration
+        private static readonly StCustomBlipConfiguration _bottomBlipConfig
+            = new StCustomBlipConfiguration
             {
                 IsShortRange
                 = true,
@@ -52,7 +52,7 @@ namespace Helideck_signaling.features.custom_helipad_blip.creators
                         .OwnedProperty
             };
 
-        public CustomHelipadBlipCreator(in Vector3 position)
+        public CustomBlipCreator(in Vector3 position)
         {
             _topBlip
                 = World.CreateBlip(position);

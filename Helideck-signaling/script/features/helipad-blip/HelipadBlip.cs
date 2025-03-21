@@ -1,19 +1,18 @@
 ﻿using GTA;
 using GTA.Math;
-using GTA.Native;
 using GTA.UI;
-using Helideck_signaling.features.custom_helipad_blip;
-using Helideck_signaling.features.helipadBlip.managers;
-using System;
+using Helideck_signaling.script.features.custom_blip;
+using Helideck_signaling.script.features.helipad_blip.managers;
+using Helideck_signaling.utils;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Helideck_signaling.features.helipadBlip
+namespace Helideck_signaling.script.features.helipad_blip
 {
     internal class HelipadBlip : HelipadBlipManager
     {
-        private readonly static CustomHelipadBlip _customHelipadBlip
-            = new CustomHelipadBlip();
+        private readonly static CustomBlip _customHelipadBlip
+            = new CustomBlip();
 
         public HelipadBlip()
         {
@@ -236,56 +235,36 @@ namespace Helideck_signaling.features.helipadBlip
                 .DeleteAllCustomBlips();
         }
 
-        private readonly static uint hash_a = StringHash.AtStringHashUtf8(/* check for duplicate native helipad position */ "hscfdnhp");
         internal void SetAllNativeHelipadPosition()
         {
             if (AreAllNativeBlipsPositionsSet())
             {
-                if (Function.Call<bool>(Hash.HAS_PC_CHEAT_WITH_HASH_BEEN_ACTIVATED, hash_a))
-                {
-                    Notification.PostTicker("hash_a", true, true);
-
-                    NativeHelipadPositions.ForEach(nhp => {
-                        CustomHelipadPositions.ForEach(chp =>
-                        {
-                            if (nhp.Length() == chp.Length())
-                            {
-                                Notification.PostTickerWithTokens($"~b~{nhp}~w~ == ~y~{chp}~w~", true, true);
-                            }
-                        });
-                    });
-                }
-
                 return;
             }
 
             SetAllNativeHelipadPositionData(out NativeHelipadPositions);
-        }
 
-        private readonly static uint hash_b = StringHash.AtStringHashUtf8(/* check for duplicate custom helipad position */ "hscfdchp");
+            Singleton.NativeHelipadPosition = NativeHelipadPositions;
+        }
         internal void SetAllCustomHelipadPosition()
         {
             if (AreAllCustomBlipsPositionsSet())
             {
-                if (Function.Call<bool>(Hash.HAS_PC_CHEAT_WITH_HASH_BEEN_ACTIVATED, hash_b))
-                {
-                    Notification.PostTicker("hash_b", true, true);
-
-                    CustomHelipadPositions.ForEach(chp => {
-                        NativeHelipadPositions.ForEach(nhp =>
-                        {
-                            if (chp.Length() == nhp.Length())
-                            {
-                                Notification.PostTickerWithTokens($"~b~{chp}~w~ == ~y~{nhp}~w~", true, true);
-                            }
-                        });
-                    });
-                }
-
                 return;
             }
 
             SetAllCustomHelipadPositionData(out CustomHelipadPositions);
+
+            Singleton.CustomHelipadPosition = CustomHelipadPositions;
+        }
+
+        internal IList<Vector3> GetAllNativeHelipadPosition()
+        {
+            return NativeHelipadPositions.AsReadOnly();
+        }
+        internal IList<Vector3> GetAllCustomHelipadPosition()
+        {
+            return CustomHelipadPositions.AsReadOnly();
         }
 
         protected void SaveAllNewNativeHelipadPositionsToTheDataFile()

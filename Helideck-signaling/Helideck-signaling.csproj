@@ -30,13 +30,16 @@
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>5</WarningLevel>
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LemonUI.SHVDN3">
+      <HintPath>D:\SteamLibrary\steamapps\common\Grand Theft Auto V\scripts\LemonUI.SHVDN3.dll</HintPath>
+    </Reference>
     <Reference Include="ScriptHookVDotNet3">
       <HintPath>D:\SteamLibrary\steamapps\common\Grand Theft Auto V\ScriptHookVDotNet3.dll</HintPath>
     </Reference>
@@ -52,19 +55,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="features\custom-helipad-blip\creators\CustomHelipadBlipCreator.cs" />
-    <Compile Include="features\custom-helipad-blip\creators\resources\structs\StCustomHelipadBlipConfiguration.cs" />
-    <Compile Include="features\custom-helipad-blip\CustomHelipadBlip.cs" />
-    <Compile Include="features\custom-helipad-blip\managers\CustomHelipadBlipManager.cs" />
-    <Compile Include="features\helipadBlip\HelipadBlip.cs" />
-    <Compile Include="features\helipadBlip\creators\HelipadBlipCreator.cs" />
-    <Compile Include="features\helipadBlip\managers\HelipadBlipManager.cs" />
+    <Compile Include="script\features\custom-blip\creators\CustomBlipCreator.cs" />
+    <Compile Include="script\features\custom-blip\creators\resources\structs\StCustomBlipConfiguration.cs" />
+    <Compile Include="script\features\custom-blip\CustomBlip.cs" />
+    <Compile Include="script\features\custom-blip\managers\CustomBlipManager.cs" />
+    <Compile Include="script\features\helipad-blip\HelipadBlip.cs" />
+    <Compile Include="script\features\helipad-blip\creators\HelipadBlipCreator.cs" />
+    <Compile Include="script\features\helipad-blip\managers\HelipadBlipManager.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="script\features\user-interface\UserInterface.cs" />
     <Compile Include="script\HelideckSignaling.cs" />
     <Compile Include="settings\Settings.cs" />
     <Compile Include="settings\creators\SettingsCreator.cs" />
     <Compile Include="settings\managers\SettingsManager.cs" />
+    <Compile Include="utils\Singleton.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

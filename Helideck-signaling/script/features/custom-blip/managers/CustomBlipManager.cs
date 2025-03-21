@@ -1,23 +1,23 @@
 ﻿using GTA.Math;
-using Helideck_signaling.features.custom_helipad_blip.creators;
+using Helideck_signaling.script.features.custom_blip.creators;
 using System.Collections.Generic;
 
-namespace Helideck_signaling.features.custom_helipad_blip.managers
+namespace Helideck_signaling.script.features.custom_blip.managers
 {
-    internal abstract class CustomHelipadBlipManager
+    internal abstract class CustomBlipManager
     {
-        private static readonly IList<CustomHelipadBlipCreator> _nativeBlips
-            = new List<CustomHelipadBlipCreator>();
+        private static readonly IList<CustomBlipCreator> _nativeBlips
+            = new List<CustomBlipCreator>();
 
-        private static readonly IList<CustomHelipadBlipCreator> _customBlips
-            = new List<CustomHelipadBlipCreator>();
+        private static readonly IList<CustomBlipCreator> _customBlips
+            = new List<CustomBlipCreator>();
 
         internal void CreateAllNativeBlipsAtThisPositions(in IList<Vector3> positions)
         {
             foreach (var position in positions)
             {
                 _nativeBlips
-                    .Add(new CustomHelipadBlipCreator(in position));
+                    .Add(new CustomBlipCreator(in position));
             }
         }
         internal void CreateAllCustomBlipsAtThisPositions(in IList<Vector3> positions)
@@ -25,7 +25,7 @@ namespace Helideck_signaling.features.custom_helipad_blip.managers
             foreach (var position in positions)
             {
                 _customBlips
-                    .Add(new CustomHelipadBlipCreator(in position));
+                    .Add(new CustomBlipCreator(in position));
             }
         }
         

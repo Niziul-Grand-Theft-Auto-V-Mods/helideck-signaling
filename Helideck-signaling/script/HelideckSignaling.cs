@@ -1,5 +1,6 @@
 ﻿using GTA;
-using Helideck_signaling.features.helipadBlip;
+using GTA.UI;
+using Helideck_signaling.script.features.helipad_blip;
 using System.Globalization;
 
 namespace Helideck_signaling.script
@@ -17,15 +18,35 @@ namespace Helideck_signaling.script
             {
                 _helipadBlip
                     .SetAllNativeHelipadPosition();
+                //_helipadBlip
+                //    .SetAllCustomHelipadPosition();
 
-                _helipadBlip
-                    .SetAllCustomHelipadPosition();
+                if (Game.WasCheatStringJustEntered(/* check for duplicate helipad position */ "hscfdhp"))
+                {
+                    var amount
+                        = 0;
+
+                    foreach (var nhp in _helipadBlip.GetAllNativeHelipadPosition())
+                    {
+                        foreach (var chp in _helipadBlip.GetAllCustomHelipadPosition())
+                        {
+                            if (nhp.Length() == chp.Length())
+                            {
+                                amount++;
+
+                                Notification.PostTickerWithTokens($"~b~{nhp}~w~ == ~y~{chp}~w~", true, true);
+                            }
+                        }
+                    }
+
+                    Notification.PostTickerWithTokens($"Amount of duplicate helipad position: ~g~{amount}~w~", true, true);
+                }
             };
 
             Aborted += (o, e) =>
             {
                 DeleteAllNativeHelipadBlip();
-                DeleteAllCustomHelipadBlip();
+                //DeleteAllCustomHelipadBlip();
 
                 ResetCultureInvariant();
             };

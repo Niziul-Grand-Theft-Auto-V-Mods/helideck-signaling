@@ -26,8 +26,8 @@ namespace Helideck_signaling
                             _helideckSignaling
                                 .CreateAllNativeHelipadBlip();
 
-                            _helideckSignaling
-                                .CreateAllCustomHelipadBlip();
+                            //_helideckSignaling
+                            //    .CreateAllCustomHelipadBlip();
 
                             if (_helideckSignaling.IsRunning)
                             {
@@ -48,8 +48,8 @@ namespace Helideck_signaling
                             _helideckSignaling
                                 .DeleteAllNativeHelipadBlip();
 
-                            _helideckSignaling
-                                .DeleteAllCustomHelipadBlip();
+                            //_helideckSignaling
+                            //    .DeleteAllCustomHelipadBlip();
 
                             if (_helideckSignaling.IsPaused)
                             {

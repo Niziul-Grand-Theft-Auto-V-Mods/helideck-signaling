@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
 
-namespace Helideck_signaling.features.helipadBlip.creators
+namespace Helideck_signaling.script.features.helipad_blip.creators
 {
     internal abstract class HelipadBlipCreator : SettingsCreator
     {
@@ -56,36 +56,6 @@ namespace Helideck_signaling.features.helipadBlip.creators
             CustomHelipadCount
                 = allCustomHelipadPositionData.Count;
         }
-
-        //protected static void SetAllNativeHelipadPositionData(out List<Vector3> allNativeHelipadPositionData)
-        //{
-        //    var helipadNativePositionDataSerialize
-        //        = new XmlSerializer(typeof(List<Vector3>));
-
-        //    using (var helipadNativePositionsFileStream = new FileStream(PathToTheNativePositionsXml, FileMode.Open))
-        //    {
-        //        allNativeHelipadPositionData
-        //            = (List<Vector3>)helipadNativePositionDataSerialize.Deserialize(helipadNativePositionsFileStream);
-        //    }
-
-        //    NativeHelipadCount
-        //        = allNativeHelipadPositionData.Count;
-        //}
-
-        //protected static void SetAllCustomHelipadPositionData(out List<Vector3> allCustomHelipadPositionData)
-        //{
-        //    var helipadCustomPositionDataSerialize
-        //        = new XmlSerializer(typeof(List<Vector3>));
-
-        //    using (var helipadCustomPositionsFileStream = new FileStream(PathToTheCustomPositionsDataXml, FileMode.Open))
-        //    {
-        //        allCustomHelipadPositionData
-        //            = (List<Vector3>)helipadCustomPositionDataSerialize.Deserialize(helipadCustomPositionsFileStream);
-        //    }
-
-        //    CustomHelipadCount
-        //        = allCustomHelipadPositionData.Count;
-        //}
 
         protected static void CreateNativeHelipadPositionDataFile(in List<Vector3> allNativePositions)
         {

@@ -1,9 +1,8 @@
 ﻿using GTA;
-using GTA.Math;
 
-namespace Helideck_signaling.features.custom_helipad_blip.creators.resources.structs
+namespace Helideck_signaling.script.features.custom_blip.creators.resources.structs
 {
-    internal struct StCustomHelipadBlipConfiguration
+    internal struct StCustomBlipConfiguration
     {
         internal bool IsShortRange
         {

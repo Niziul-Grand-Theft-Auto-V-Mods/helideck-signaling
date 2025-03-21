@@ -1,8 +1,8 @@
 ﻿using GTA.Math;
-using Helideck_signaling.features.helipadBlip.creators;
+using Helideck_signaling.script.features.helipad_blip.creators;
 using System.Collections.Generic;
 
-namespace Helideck_signaling.features.helipadBlip.managers
+namespace Helideck_signaling.script.features.helipad_blip.managers
 {
     internal abstract class HelipadBlipManager : HelipadBlipCreator
     {
