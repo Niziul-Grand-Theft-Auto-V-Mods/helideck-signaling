@@ -18,8 +18,8 @@ namespace Helideck_signaling.script
             {
                 _helipadBlip
                     .SetAllNativeHelipadPosition();
-                //_helipadBlip
-                //    .SetAllCustomHelipadPosition();
+                _helipadBlip
+                    .SetAllCustomHelipadPosition();
 
                 if (Game.WasCheatStringJustEntered(/* check for duplicate helipad position */ "hscfdhp"))
                 {
@@ -46,7 +46,7 @@ namespace Helideck_signaling.script
             Aborted += (o, e) =>
             {
                 DeleteAllNativeHelipadBlip();
-                //DeleteAllCustomHelipadBlip();
+                DeleteAllCustomHelipadBlip();
 
                 ResetCultureInvariant();
             };

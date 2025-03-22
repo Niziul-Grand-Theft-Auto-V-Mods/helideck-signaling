@@ -16,7 +16,7 @@ namespace Helideck_signaling.script.features.helipad_blip
 
         public HelipadBlip()
         {
-            if (!File.Exists(PathToTheNativePositionsXml))
+            if (!File.Exists(Settings.PathToTheNativePositionsXml))
             {
                 NativeHelipadPositions
                     = new List<Vector3>
@@ -140,7 +140,7 @@ namespace Helideck_signaling.script.features.helipad_blip
                 SaveAllNewNativeHelipadPositionsToTheDataFile();
             }
 
-            if (!File.Exists(PathToTheCustomPositionsDataXml))
+            if (!File.Exists(Settings.PathToTheCustomPositionsDataXml))
             {
                 SaveAllNewCustomHelipadPositionsToTheDataFile();
             }
