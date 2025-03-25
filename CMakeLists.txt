@@ -79,7 +79,7 @@ add_library(Helidecksignaling SHARED
 
 target_link_libraries(Helidecksignaling
     PUBLIC ScriptHookV
-    INTERFACE toml11::toml11
+    PUBLIC toml11::toml11
 )
 
 set(GTA_V_DIR "D:/SteamLibrary/steamapps/common/Grand Theft Auto V" CACHE PATH "Path to GTA V installation directory")
