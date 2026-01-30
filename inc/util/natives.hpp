@@ -2,9 +2,8 @@
 
 // Generated Tue, 24 Dec 2024 16:17:55 GMT
 // https://alloc8or.re/gta5/nativedb/
-
-#include "../../build/_deps/scripthookv-src/inc/nativeCaller.h"
-#include "../../build/_deps/scripthookv-src/inc/types.h"
+#include "../../lib/shv/inc/nativeCaller.h"
+#include "../../lib/shv/inc/types.h"
 
 #ifndef NATIVE_DECL
 #if defined(_MSC_VER)
