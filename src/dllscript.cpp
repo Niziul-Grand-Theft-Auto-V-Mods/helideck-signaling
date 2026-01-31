@@ -1,7 +1,7 @@
-#include "../inc/util/natives.hpp"
-#include "../inc/util/hashing.hpp"
-#include "../inc/util/post_ticker.hpp"
-#include "../inc/util/settings.hpp"
+#include "./util/natives.hpp"
+#include "./util/hashing.hpp"
+#include "./util/post_ticker.hpp"
+#include "./settings/settings.hpp"
 
 constexpr auto cheat_a = joaat("eta");
 
@@ -11,7 +11,9 @@ void example_toml_a()
   {
     log_helideck_signaling();
 
-    postTickerWithTokens("log: ~b~Helideck-signaling.log~w~", true, true);
+    postTickerWithTokens("log: ~b~Helideck-signaling.log~w~",
+                         true,
+                         true);
   }
 }
 
