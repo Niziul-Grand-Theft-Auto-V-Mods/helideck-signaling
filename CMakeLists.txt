@@ -38,10 +38,9 @@ add_library(Helidecksignaling SHARED
 # Apply warning flags only to this target (and only if defined, e.g. on MSVC)
 target_compile_options(Helidecksignaling PRIVATE ${HELIDECKSIGNALING_WARNING_FLAGS})
 
-# ---------------- Third‑party: toml11 -----------------------
+# ---------------- Third‑party -----------------------
 
-# Add toml11 as a subdirectory; it must contain its own CMakeLists.txt
-# Typically you add it as a git submodule at lib/toml11
+add_subdirectory(lib/spdlog)
 add_subdirectory(lib/toml11)
 
 # ---------------- ScriptHookV configuration -----------------
@@ -65,7 +64,6 @@ set(SCRIPTHOOKV_INC_DIR
 # - Project headers under inc/
 # - ScriptHookV headers
 target_include_directories(Helidecksignaling PRIVATE
-    "${CMAKE_SOURCE_DIR}/inc"
     "${SCRIPTHOOKV_INC_DIR}"
 )
 
@@ -74,8 +72,9 @@ target_include_directories(Helidecksignaling PRIVATE
 # Link against ScriptHookV and toml11
 # toml11::toml11 is the target exported by toml11's CMake code
 target_link_libraries(Helidecksignaling PRIVATE
-    "${SCRIPTHOOKV_LIB}"
+    spdlog::spdlog
     toml11::toml11
+    "${SCRIPTHOOKV_LIB}"
 )
 
 # ---------------- Configuration‑specific defines ----------------
