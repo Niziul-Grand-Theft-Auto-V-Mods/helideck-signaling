@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../../inc/util/natives.hpp"
 
 inline void postTicker(const char* message,

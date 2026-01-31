@@ -1,27 +1,17 @@
 #include "../inc/util/natives.hpp"
 #include "../inc/util/hashing.hpp"
 #include "../inc/util/post_ticker.hpp"
-#include "../lib/toml11/include/toml.hpp"
-#include <filesystem>
-#include <string>
+#include "../inc/util/settings.hpp"
 
 constexpr auto cheat_a = joaat("eta");
-constexpr auto cheat_b = joaat("etb");
-
-auto static const log_path
-  = std::filesystem::current_path() / "HelideckSignaling" / "log.toml";
 
 void example_toml_a()
 {
   if (MISC::HAS_PC_CHEAT_WITH_HASH_BEEN_ACTIVATED(cheat_a))
   {
-    auto data
-      = toml::parse(std::filesystem::current_path() / "HelideckSignaling" / "toml-example_a.tml");
+    log_helideck_signaling();
 
-    auto title
-      = toml::find<std::string>(data, "title");
-
-    postTickerWithTokens(title.c_str(), true, true);
+    postTickerWithTokens("log: ~b~Helideck-signaling.log~w~", true, true);
   }
 }
 
