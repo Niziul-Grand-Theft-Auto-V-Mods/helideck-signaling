@@ -1,9 +1,9 @@
-#include "./util/natives.hpp"
-#include "./util/hashing.hpp"
-#include "./util/post_ticker.hpp"
+#include "script.hpp"
+
 #include "./settings/settings.hpp"
 
-constexpr auto cheat_a = joaat("eta");
+constexpr auto cheat_a = "rwtea"_J;
+constexpr auto cheat_b = "rwteb"_J;
 
 void example_toml_a()
 {
@@ -30,18 +30,18 @@ void script_main()
       = PLAYER::PLAYER_PED_ID();
 
     if (DLC::GET_IS_LOADING_SCREEN_ACTIVE()
-        ||
-        !ENTITY::DOES_ENTITY_EXIST(player_ped)
-        ||
-        !PLAYER::IS_PLAYER_CONTROL_ON(player))
+      ||
+      !ENTITY::DOES_ENTITY_EXIST(player_ped)
+      ||
+      !PLAYER::IS_PLAYER_CONTROL_ON(player))
     {
       WAIT(0);
       continue;
     }
 
     if (PED::IS_PED_INJURED(player_ped)
-        ||
-        PLAYER::IS_PLAYER_BEING_ARRESTED(player, TRUE))
+      ||
+      PLAYER::IS_PLAYER_BEING_ARRESTED(player, TRUE))
     {
       WAIT(0);
       continue;
@@ -61,20 +61,3 @@ void script_main()
   return;
 }
 
-BOOL APIENTRY DllMain(HMODULE h_module, DWORD ul_reason_for_call)
-{
-  switch (ul_reason_for_call)
-  {
-    case DLL_PROCESS_ATTACH:
-      {
-        scriptRegister(h_module, script_main);
-      }
-      break;
-    case DLL_PROCESS_DETACH:
-      {
-        scriptUnregister(h_module);
-      }
-      break;
-  }
-  return TRUE;
-}

@@ -1,7 +1,6 @@
 #pragma once
 
-#include "../../lib/toml11/include/toml.hpp"
-#include <filesystem>
+#include "../util/common.hpp"
 
 auto static const log_path = std::filesystem::current_path() / "Helideck-signaling.log";
 

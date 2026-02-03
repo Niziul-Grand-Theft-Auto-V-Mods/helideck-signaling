@@ -32,7 +32,8 @@ endif()
 
 # Build the main plugin as a shared library (.dll which we will rename to .asi)
 add_library(Helidecksignaling SHARED
-    src/dllscript.cpp           # Your plugin source file
+    src/main.cpp           # Your plugin source file
+    src/script.cpp           # Your plugin source file
 )
 
 # Apply warning flags only to this target (and only if defined, e.g. on MSVC)
@@ -40,7 +41,6 @@ target_compile_options(Helidecksignaling PRIVATE ${HELIDECKSIGNALING_WARNING_FLA
 
 # ---------------- Third‑party -----------------------
 
-add_subdirectory(lib/spdlog)
 add_subdirectory(lib/toml11)
 
 # ---------------- ScriptHookV configuration -----------------
@@ -72,7 +72,6 @@ target_include_directories(Helidecksignaling PRIVATE
 # Link against ScriptHookV and toml11
 # toml11::toml11 is the target exported by toml11's CMake code
 target_link_libraries(Helidecksignaling PRIVATE
-    spdlog::spdlog
     toml11::toml11
     "${SCRIPTHOOKV_LIB}"
 )
